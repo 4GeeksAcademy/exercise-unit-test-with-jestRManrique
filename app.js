@@ -1,18 +1,42 @@
-// Esta es mi función fromEuroToDollar para saber cuantos € son en $
-const fromEuroToDollar = function(valueInEuro)  {
-    let valueInDollar = valueInEuro * 1.07;
+// Esta es mi función que suma dos números
+const sum = (a,b) => {
+    return a + b
+}
+// Solo un registro en consola para nosotros
+console.log(sum(7,3))
+
+// Exporta la función para usarla en otros archivos 
+module.exports = { sum };
+
+
+let oneEuroIs = {
+    "JPY": 156.5, // Japan Yen
+    "USD": 1.07, // US Dollar
+    "GBP": 0.87, // British Pound
+}
+
+// Declaramos una función descriptiva "fromEuroToDollar"
+const fromEuroToDollar = function(valueInEuro) {
+    // Convertimos el valor de Euro a Dollar
+    let valueInDollar = valueInEuro * oneEuroIs.USD;
+    // Retornamos el valor en dólares
     return valueInDollar;
 }
 
-// Esta es mi función fromDollarToYen para saber cuantos $ son en Y
-const fromDollarToYen = function(valueInDollar)  {
-    let  valeuInYen = valueInDollar * 1.07 * 156.5;
-    return valeuInYen;
+// Declaramos una función descriptiva "fromDollarToYen"
+const fromDollarToYen = (valueInDollar) => {
+    // Convertimos el valor de Dollar a Yen
+    let valueInYen =  valueInDollar * oneEuroIs.JPY;
+    // Retornamos el valor en Yen
+    return valueInYen;
 }
-
-// Esta es mi función fromYenToPound para saber cuantos Y son en Pound
-const fromYenToPound = function(valeuInYen)  {
-    let valueInPound = valeuInYen * 1.07 * 156.5 * 0.87;
+    // Declaramos una función descriptiva "fromYenToPound"
+const fromYenToPound = (valueInYen) => {
+    // Convertimos el valor de Yen a Pound
+    let valueInPound = valueInYen * oneEuroIs.GBP;
+    // Retornamos el valor en Pound
     return valueInPound;
 }
-module.exports = {fromEuroToDollar, fromDollarToYen, fromYenToPound};
+
+// Exporta la función para usarla en otros archivos (test.js)
+module.exports = {sum, fromEuroToDollar, fromDollarToYen, fromYenToPound};
